@@ -113,7 +113,7 @@ export default class SenderStatus extends React.Component {
         return (
         <div>
              <div class="top-navigation" >
-                <Button style={hideButton} size="medium">הסתר</Button>
+                <Button href='/' style={hideButton} size="medium">הסתר</Button>
              </div>
 
              <div class="status">
