@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import AlertButton from './components/AlertButton';
 import SecondScreen from './components/SecondScreen';
+import ControlBoard from './components/ControlBoard';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/sos">
               <SecondScreen />
+            </Route>
+            <Route path="/control">
+              <ControlBoard />
             </Route>
           </Switch>
         </div>
