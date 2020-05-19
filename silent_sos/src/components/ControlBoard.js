@@ -1,6 +1,5 @@
 import React from 'react';
 import {reactLocalStorage} from 'reactjs-localstorage';
-import ReactScrollableList from 'react-scrollable-list';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
