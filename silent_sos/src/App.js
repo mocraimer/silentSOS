@@ -28,7 +28,7 @@ function App() {
               <AlertButton />
             </Route>
             <Route path="/sos">
-              <SecondScreen />
+              <SenderStatus />
             </Route>
             <Route path="/control">
               <ControlBoard />
