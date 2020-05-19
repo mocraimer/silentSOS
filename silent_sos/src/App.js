@@ -8,8 +8,9 @@ import {
   Link
 } from "react-router-dom";
 import AlertButton from './components/AlertButton';
-import SecondScreen from './components/SecondScreen';
+import SenderStatus from './components/SenderStatus';
 import ControlBoard from './components/ControlBoard';
+
 
 function App() {
   return (
