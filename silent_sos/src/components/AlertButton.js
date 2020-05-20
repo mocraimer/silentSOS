@@ -36,6 +36,7 @@ export default class AlertButton extends React.Component {
     state = {
         showAlert: false,
         game: (
+            // Game taken from https://github.com/svsem/Memorai
             <div>
                 <Game />
                 <button class="helpButton" onClick={this.about}>אודות</button>
@@ -43,9 +44,11 @@ export default class AlertButton extends React.Component {
                 <button class="helpButton" onClick={this.startNewGame}>משחק חדש</button>
             </div>),
         alertButton: (
-            <a onClick={this.handleAlert} href="/sos">
-                <img class="img-responsive emsbutton" src="static/images/sos_button.png" />
-            </a>)
+            <div class="alertButton">
+                <a onClick={this.handleAlert} href="/sos">
+                    <img class="img-responsive emsbutton" src="static/images/sos_button.png" />
+                </a>
+            </div>)
     }
 
     render() {

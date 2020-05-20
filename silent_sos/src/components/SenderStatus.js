@@ -61,19 +61,19 @@ const useColorlibStepIconStyles = makeStyles({
 
 function ColorlibStepIcon(props) {
     const classes = useColorlibStepIconStyles();
-     const { active, completed } = props;
+    const { active, completed } = props;
 
     const icons = {
-            1: <CheckCircleIcon />,
-            2: <PeopleOutlineIcon />,
-            3: <HouseIcon />,
+        1: <CheckCircleIcon />,
+        2: <PeopleOutlineIcon />,
+        3: <HouseIcon />,
     };
 
     return (
         <div
             className={clsx(classes.root, {
-            [classes.active]: active,
-            [classes.completed]: completed,
+                [classes.active]: active,
+                [classes.completed]: completed,
             })}>
             {icons[String(props.icon)]}
         </div>
@@ -86,7 +86,7 @@ export default class SenderStatus extends React.Component {
         const steps = ['הקריאה התקבלה', 'עזרה בדרך', 'עזרה בקרבתך'];
 
         const iconButton = {
-            color: "white",
+            color: "#cfcfcf",
             fontSize: "60px",
         };
 
@@ -101,7 +101,7 @@ export default class SenderStatus extends React.Component {
             height: "50px",
             textAlign: "right",
             padding: "6px"
-    }
+        }
 
         const hideButton = {
             color: "gray",
@@ -111,46 +111,46 @@ export default class SenderStatus extends React.Component {
 
 
         return (
-        <div>
-             <div class="top-navigation" >
-                <Button href='/' style={hideButton} size="medium">הסתר</Button>
-             </div>
+            <div>
+                <div class="top-navigation" >
+                    <Button href='/' style={hideButton} size="medium">הסתר</Button>
+                </div>
 
-             <div class="status">
+                <div class="status">
 
-                <Stepper alternativeLabel  connector={<ColorlibConnector />}>
-                    {steps.map((label) => (
-                        <Step key={label}>
-                            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-                        </Step>
-                    ))}
-                </Stepper>
-             </div>
+                    <Stepper alternativeLabel connector={<ColorlibConnector />}>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                </div>
 
-             <div style={{padding: "10px"}}>
-                <h3>בחר/י מידע נוסף שכדאי לשתף</h3>
-                <FormControlLabel style={item}
-                    control={<Checkbox icon={<ChildCareIcon  style={ iconButton }/> }
-                                        checkedIcon={<ChildCareIcon  style={{ fontSize: 60 }}/>}
-                    name="checkedA" />}
-                    label={<p style={{color:"white" }}>ילדים בסביבה</p>}
-                    labelPlacement="bottom"
-                />
+                <div style={{ padding: "10px" }}>
+                    <h3>בחר/י מידע נוסף שכדאי לשתף</h3>
+                    <FormControlLabel style={item}
+                        control={<Checkbox icon={<ChildCareIcon style={iconButton} />}
+                            checkedIcon={<ChildCareIcon style={{ fontSize: 60 }} />}
+                            name="checkedA" />}
+                        label={<p style={{ color: "black" }}>ילדים בסביבה</p>}
+                        labelPlacement="bottom"
+                    />
 
-                <FormControlLabel style={item}
-                    control={<Checkbox icon={<HealingIcon  style={ iconButton }/>}
-                                        checkedIcon={<HealingIcon  style={{ fontSize: 60 }}/>}
-                    name="checkedA" />}
-                    label={<p style={{color:"white" }}> זקוק/ה לסיוע רפואי </p>}
-                    labelPlacement="bottom"
-                />
-             </div>
+                    <FormControlLabel style={item}
+                        control={<Checkbox icon={<HealingIcon style={iconButton} />}
+                            checkedIcon={<HealingIcon style={{ fontSize: 60 }} />}
+                            name="checkedA" />}
+                        label={<p style={{ color: "black" }}> זקוק/ה לסיוע רפואי </p>}
+                        labelPlacement="bottom"
+                    />
+                </div>
 
-             <div style={{paddingBottom: "10px"}}>
-                <input type="text" style={textArea} placeholder="טקסט חופשי"/>
-             </div>
-             <Button style={{backgroundColor: "gray"}}>שלח</Button>
-    </div>
-    );
+                <div style={{ paddingBottom: "10px" }}>
+                    <input type="text" style={textArea} placeholder="טקסט חופשי" />
+                </div>
+                <Button style={{ backgroundColor: "gray" }}>שלח</Button>
+            </div>
+        );
     }
 }
