@@ -19,7 +19,7 @@ const Chat = (props) => {
   return (
       <div className="chat-list">
         {props.messages.map((message,key)=>{
-                    return (<div class="bubble-container">
+                    return (<div class="bubble-container bubble-direction-reverse">
                     <img class="img-circle" src="icons8-person-female-48.png"/>
             <div class="bubble me">{message.text}</div></div>);
         })}
