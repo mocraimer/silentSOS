@@ -97,6 +97,18 @@
   background-color: #8f5db7;
 }
 
+.you {
+  background-color: #087FFE;
+  margin-left: 60px;
+  margin-right:18px;
+}
+
+.you::before {
+  box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4 );
+  right: -9px;
+  background-color: #087FFE;
+}
+
 
 .img-circle {
   border-radius: 42%;
@@ -105,7 +117,7 @@
 }
 
 .chat-list {
-  height: calc(100% - 3rem);
+  height: 80vh;
   overflow-y: scroll;
   padding: 1rem;
   padding-bottom: 0.5rem;
@@ -121,4 +133,8 @@
 
 .MuiToggleButton-root.Mui-selected {
   background-color: #61dafb !important;
+}
+
+.hidden{
+  display: none;
 }

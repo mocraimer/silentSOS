@@ -9,7 +9,33 @@ import GoogleMapReact from 'google-map-react';
 import Chat from './ChatBubble'
 import Grid from '@material-ui/core/Grid';
 
+const listItemStyle = {padding: "10px"};
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
+ const alertsToAdd = [{
+    id:1,
+    status:'התקבלה',
+    date:'20.05.20 - 10:00'
+    },
+    {
+        id:2,
+        status:'התקבלה',
+        date:'20.05.20 - 11:00'
+    },
+    {
+        id:3,
+        status:'נשלחה עזרה',
+        date:'20.05.20 - 11:15'
+    }
+]
+const messagesToAdd =  [{
+    "text": "זקוקה לטיפול רפואי"
+}, {
+    "text": "יש ילדים במקום"
+}, {
+    "text": "בבקשה תזעיקו עזרה"
+}];
+
 export default class ControlBoard extends React.Component {
     handleFormat = (event, newFormats) => {
         this.setState({selectedButtons:['underlined','italic']})
@@ -18,29 +44,24 @@ export default class ControlBoard extends React.Component {
 
       state = {
         selectedButtons:['underlined'],
-        messages: [{
-            "text": "זקוקה לטיפול רפואי"
-        }, {
-            "text": "יש ילדים במקום"
-        }, {
-            "text": "בבקשה תזעיקו עזרה! בעלי מרביץ לי"
-        }],
-        alerts : [{
-            id:1,
-            status:'התקבלה',
-            date:'20.05.20 - 10:00'
-            },
-            {
-                id:2,
-                status:'התקבלה',
-                date:'20.05.20 - 11:00'
-            },
-            {
-                id:3,
-                status:'נשלחה עזרה',
-                date:'20.05.20 - 11:15'
-            }
-        ]
+        messages: [],
+        alerts : [ ],
+        hideAll:true
+      }
+      componentDidMount() {
+            {setTimeout(()=>{
+                this.setState({hideAll: false})
+                this.setState({alerts:[alertsToAdd[0]]})
+            },3000)}
+            {setTimeout(()=>{
+                this.setState({messages:[messagesToAdd[0]]})
+            },5000)}
+            setTimeout(()=>{
+                this.setState({messages:[messagesToAdd[0],messagesToAdd[1]]})
+            },10000)
+            {setTimeout(()=>{
+                this.setState({messages:[messagesToAdd[0],messagesToAdd[1],messagesToAdd[2]]})
+            },15000)}
       }
 
     render() {
@@ -60,8 +81,8 @@ export default class ControlBoard extends React.Component {
                         <Grid item container direction="column" spacing={1}>
                             <br></br>
                             <br></br>
-                            <Grid justify ='center' alignItems = 'stretch' item className='statusButtons' >
-                                    <ToggleButtonGroup value={this.state.selectedButtons} onChange={this.handleFormat} aria-label="text formatting">
+                            <Grid justify ='center' alignItems = 'stretch' item className='statusButtons' className={this.state.hideAll ? 'hidden' : ''}  >
+                                    <ToggleButtonGroup className={this.state.hideAll ? 'hidden' : ''} value={this.state.selectedButtons} onChange={this.handleFormat} aria-label="text formatting">
                                         <ToggleButton value="bold" aria-label="bold">
                                             <h2>עזרה בקרבתך</h2>
                                         </ToggleButton>
@@ -74,18 +95,18 @@ export default class ControlBoard extends React.Component {
                                     </ToggleButtonGroup>
                                 </Grid>
                                 <br></br>
-                                <Grid item>
+                                <Grid item className={this.state.hideAll ? 'hidden' : ''}>
                                     <img src='map.png' style={{borderStyle: 'solid', width:'300px', height:'200px'}}></img>
                                 </Grid>
                         </Grid>
                     </Grid>
-                    <Grid container xs={3} direction="row">
-                        <Grid container direction="column">
+                    <Grid container xs={3} direction="row" >
+                        <Grid  className={this.state.hideAll ? 'hidden' : ''} container direction="column">
                             <Grid item>
-                                    <h2>מידע נוסף מהמדווח/ת</h2>
+                                    <h2 className={this.state.hideAll ? 'hidden' : ''} >מידע נוסף מהמדווח/ת</h2>
                             </Grid>
                             <Grid item className='chatContainer'>
-                                    <Chat messages = {this.state.messages} />
+                                    <Chat  messages = {this.state.messages} />
                             </Grid>
                         </Grid>
                     </Grid>
@@ -94,9 +115,9 @@ export default class ControlBoard extends React.Component {
                                 <List style={{height:'100%'}} component="nav" aria-label="secondary mailbox folders">
                                     {this.state.alerts.map((alrt,key) => {
                                         return <ListItem className="alertListContainer">
-                                        <ListItemText primary={alrt.id} />
-                                        <ListItemText primary={alrt.status} />
-                                        <ListItemText primary={alrt.date} />
+                                        <ListItemText primary={alrt.status} style={listItemStyle} />
+                                        <ListItemText primary={alrt.date} style={listItemStyle}/>
+                                        <ListItemText primary={alrt.id} style={listItemStyle} /> 
                                         </ListItem>
                                     })}
                                 </List>
